@@ -13,6 +13,13 @@ logging.basicConfig(filename=log_location ,format='%(asctime)s - %(name)s - %(me
 token = "777099556:AAGUJtwLihGVQk2aAt9TgeVEXPf4aCMAy-U"
 updater = Updater(token=token)
 
+#Read command answers from files.
+texts_location = home_dir+'databases/answers.txt'
+texts_file = open(texts_location, 'r')
+texts = texts_file.read()
+answers = eval(texts)
+texts_file.close()
+
 class User:
     def __init__(self):
         self.id = None
@@ -26,8 +33,8 @@ user = User()
 # Start function for answer /start command.
 def start(bot, update):
     user.chat = update.message.chat_id #Get chat ID.
-    text = "سلام. برای دیدن لیست دستورات، دستور زیر را ارسال نمیایید:\n/help"
-    bot.send_message(chat_id=user.chat, text=text)#Send text message to chat ID.
+    answer = answers['start']
+    bot.send_message(chat_id=user.chat, text=answer)#Send text message to chat ID.
 
 
 dispatcher = updater.dispatcher
