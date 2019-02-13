@@ -9,9 +9,14 @@ home_dir = '../'#Bot's home loction.
 log_location =  home_dir+'logs/bot.log'#Loction of log file.
 logging.basicConfig(filename=log_location ,format='%(asctime)s - %(name)s - %(message)s', level=logging.INFO)
 
-#Bot token.
-token = "777099556:AAGUJtwLihGVQk2aAt9TgeVEXPf4aCMAy-U"
-updater = Updater(token=token)
+#Read Bot's token from file.
+TOKEN_location = home_dir+"bot/TOKEN.txt"
+TOKEN_file = open(TOKEN_location, 'r')
+TOKEN = TOKEN_file.read()[:-1]#For \n end of file :]
+TOKEN_file.close()
+
+updater = Updater(token=TOKEN)
+
 
 #Read command answers from files.
 texts_location = home_dir+'databases/answers.txt'
