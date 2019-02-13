@@ -3,7 +3,11 @@
 from telegram.ext import Updater, MessageHandler, Filters, CommandHandler, CallbackQueryHandler
 from telegram import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
 from datetime import datetime
-import logging
+import logging, sys
+
+#Import the answers dict from databases/answers.py
+sys.path.insert(0, '../databases/')
+from answers import answers
 
 home_dir = '../'#Bot's home loction.
 log_location =  home_dir+'logs/bot.log'#Loction of log file.
@@ -16,14 +20,6 @@ TOKEN = TOKEN_file.read()[:-1]#For \n end of file :]
 TOKEN_file.close()
 
 updater = Updater(token=TOKEN)
-
-
-#Read command answers from files.
-texts_location = home_dir+'databases/answers.txt'
-texts_file = open(texts_location, 'r')
-texts = texts_file.read()
-answers = eval(texts)
-texts_file.close()
 
 class User:
     def __init__(self):
