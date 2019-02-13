@@ -4,3 +4,4 @@
 .venv/*
 logs/*
 *.log
+TOKEN.txt
