@@ -30,17 +30,25 @@ class User:
 
 user = User()
 
-# Start function for answer /start command.
+# Start function for answering /start command.
 def start(bot, update):
     user.chat = update.message.chat_id #Get chat ID.
     answer = answers['start']
-    bot.send_message(chat_id=user.chat, text=answer)#Send text message to chat ID.
+    bot.send_message(chat_id=user.chat, text=answer)#Send answer message to chat ID.
 
+# Help function for answering /help command
+def help(bot, update):
+    user.chat = update.message.chat_id #Get chat ID.
+    answer = answers['help']
+    bot.send_message(chat_id=user.chat, text=answer)#Send answer message to chat ID.
 
 dispatcher = updater.dispatcher
 
 start_command = CommandHandler('start', start)
-dispatcher.add_handler(start_command) #Add command handler /start.
+dispatcher.add_handler(start_command) #Add /start command handler.
+
+help_command = CommandHandler('help', help)
+dispatcher.add_handler(help_command) #Add /help command handler.
 
 print("READY!")
 
