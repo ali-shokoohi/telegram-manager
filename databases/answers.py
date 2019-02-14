@@ -10,7 +10,8 @@ flood = open("../databases/answers/flood.md", "r", encoding="utf8").read()
 free = open("../databases/answers/free.md", "r", encoding="utf8").read()
 grub = open("../databases/answers/grub.md", "r", encoding="utf8").read()
 hacker = open("../databases/answers/hacker.md", "r", encoding="utf8").read()
-help = open("../databases/answers/help.md", "r", encoding="utf8").read()
+help_pv = open("../databases/answers/help_pv.md", "r", encoding="utf8").read()
+help_pub = open("../databases/answers/help_pub.md", "r", encoding="utf8").read()
 kali = open("../databases/answers/kali.md", "r", encoding="utf8").read()
 lamp = open("../databases/answers/lamp.md", "r", encoding="utf8").read()
 link = open("../databases/answers/link.md", "r", encoding="utf8").read()
@@ -31,7 +32,8 @@ answers = {
     "free": free,
     "grub": grub,
     "hacker": hacker,
-    "help": help,
+    "help_pv": help_pv,
+    "help_pub": help_pub,
     "kali": kali,
     "lamp": lamp,
     "link": link,

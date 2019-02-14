@@ -32,24 +32,28 @@ class User:
 user = User()
 
 # Start function for answering /start command.
-def start(bot, update):
-    if 'reply_to_message' in str(update.message):
-        message_id = update.message.reply_to_message.message_id
-        print("Message ID =", message_id)
+def start(bot, update, args):
+    if len(args) > 0:#Check if start has any arguments
+        message = " ".join(args)
+        if message=='help':
+            answer = answers['help_pv']
+        else:
+            answer = answers['start']
     else:
-        message_id = update.message.message_id
+        answer = answers['start']
+    message_id = update.message.message_id
     user.chat = update.message.chat_id #Get chat ID.
-    answer = answers['start']
     bot.send_message(chat_id=user.chat, text=answer, reply_to_message_id=message_id, parse_mode=ParseMode.MARKDOWN)#Send answer message to chat ID.
 
 # Help function for answering /help command
 def help(bot, update):
-    if 'reply_to_message' in str(update.message):
-        message_id = update.message.reply_to_message.message_id
-    else:
-        message_id = update.message.message_id
     user.chat = update.message.chat_id
-    answer = answers['help']
+    user.id = update.message.from_user.id
+    if user.chat == user.id:#If user send message as private message
+        answer = answers['help_pv']
+    else:
+        answer = answers['help_pub']
+    message_id = update.message.message_id
     bot.send_message(chat_id=user.chat, text=answer, reply_to_message_id=message_id, parse_mode=ParseMode.MARKDOWN)
 
 # ask function for answering /ask command
@@ -214,7 +218,7 @@ def xampp(bot, update):
 
 dispatcher = updater.dispatcher
 
-start_command = CommandHandler('start', start)
+start_command = CommandHandler('start', start, pass_args=True)
 dispatcher.add_handler(start_command) #Add /start command handler.
 
 help_command = CommandHandler('help', help)
