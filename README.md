@@ -7,6 +7,8 @@ git clone "https://github.com/ali-shokoohi/telegram-manager.git"
 
 cd telegram-manager/
 
+mkdir logs/ || touch logs/bot.log
+
 pip3 install -r requirements.txt #--user
 ```
 
