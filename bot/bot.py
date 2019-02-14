@@ -225,9 +225,11 @@ def messages(bot, update):
     for ubuntu in ubuntus:
         if ubuntu in message:#Check if user say ubuntu as wrong!
             answer = answer + " *اوبونتو\n"
+            break
     for work in works:
         if work in message:#Ask your question at first!
             answer = answer + " بهتر است به جای ارسال مطلب خود در چندین پیام، همه‌ی متن را در یک پیام نوشته و ارسال کنید.\n"
+            break
     if len(answer) > 0:#has bot any answer?!
         message_id = update.message.message_id
         bot.send_message(chat_id=user.chat, text=answer, reply_to_message_id=message_id)
