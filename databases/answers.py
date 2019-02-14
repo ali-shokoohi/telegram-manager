@@ -1,24 +1,25 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
 
 #-----------Read-answers-from-md-files-------------
-ask = open("../databases/answers/ask.md", "r").read()
-bitcoin = open("../databases/answers/bitcoin.md", "r").read()
-botinfo = open("../databases/answers/botinfo.md", "r").read()
-farsi = open("../databases/answers/farsi.md", "r").read()
-flood = open("../databases/answers/flood.md", "r").read()
-free = open("../databases/answers/free.md", "r").read()
-grub = open("../databases/answers/grub.md", "r").read()
-hacker = open("../databases/answers/hacker.md", "r").read()
-help = open("../databases/answers/help.md", "r").read()
-kali = open("../databases/answers/kali.md", "r").read()
-lamp = open("../databases/answers/lamp.md", "r").read()
-link = open("../databases/answers/link.md", "r").read()
-mahak = open("../databases/answers/mahak.md", "r").read()
-searx= open("../databases/answers/searx.md", "r").read()
-smart = open("../databases/answers/smart.md", "r").read()
-start = open("../databases/answers/start.md", "r").read()
-tor = open("../databases/answers/tor.md", "r").read()
-xampp = open("../databases/answers/xampp.md", "r").read()
+ask = open("../databases/answers/ask.md", "r", encoding="utf8").read()
+bitcoin = open("../databases/answers/bitcoin.md", "r", encoding="utf8").read()
+botinfo = open("../databases/answers/botinfo.md", "r", encoding="utf8").read()
+farsi = open("../databases/answers/farsi.md", "r", encoding="utf8").read()
+flood = open("../databases/answers/flood.md", "r", encoding="utf8").read()
+free = open("../databases/answers/free.md", "r", encoding="utf8").read()
+grub = open("../databases/answers/grub.md", "r", encoding="utf8").read()
+hacker = open("../databases/answers/hacker.md", "r", encoding="utf8").read()
+help = open("../databases/answers/help.md", "r", encoding="utf8").read()
+kali = open("../databases/answers/kali.md", "r", encoding="utf8").read()
+lamp = open("../databases/answers/lamp.md", "r", encoding="utf8").read()
+link = open("../databases/answers/link.md", "r", encoding="utf8").read()
+mahak = open("../databases/answers/mahak.md", "r", encoding="utf8").read()
+searx= open("../databases/answers/searx.md", "r", encoding="utf8").read()
+smart = open("../databases/answers/smart.md", "r", encoding="utf8").read()
+start = open("../databases/answers/start.md", "r", encoding="utf8").read()
+tor = open("../databases/answers/tor.md", "r", encoding="utf8").read()
+xampp = open("../databases/answers/xampp.md", "r", encoding="utf8").read()
 #--------------------------------------------------
 
 answers = {
