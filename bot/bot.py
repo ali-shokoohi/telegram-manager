@@ -3,7 +3,7 @@
 from telegram.ext import Updater, MessageHandler, Filters, CommandHandler, CallbackQueryHandler
 from telegram import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton, ParseMode
 from datetime import datetime
-import logging, sys
+import logging, sys, json
 
 #Import the answers dict from databases/answers.py
 sys.path.insert(0, '../databases/')
@@ -18,6 +18,8 @@ TOKEN_location = home_dir+"bot/TOKEN.txt"
 TOKEN_file = open(TOKEN_location, 'r')
 TOKEN = TOKEN_file.read()[:-1]#For \n end of file :]
 TOKEN_file.close()
+
+admins = ['554868848']
 
 updater = Updater(token=TOKEN)
 
@@ -176,6 +178,31 @@ def mahak(bot, update):
     answer = answers['mahak']
     bot.send_message(chat_id=user.chat, text=answer, reply_to_message_id=message_id, parse_mode=ParseMode.MARKDOWN)
 
+#Report message to admin
+def report(bot, update):
+    chat_id = update.message.chat_id
+    report_id = update.message.message_id
+    if 'reply_to_message' in str(update.message):
+        message = eval(str(update.message.reply_to_message))#Convert reply_message information to dict; TODO: Make it easier.
+        #Get the message informations
+        message_epoch = int(message["date"])#Get message epoch time (timestramp)
+        message_date = datetime.fromtimestamp(message_epoch)#Convert to real date
+        message_text = message["text"]
+        user.chat = chat_id
+        user.id = message["from"]["id"]
+        user.fname = message["from"]["first_name"]
+        user.lname = message["from"]["last_name"]
+        user.uname = message["from"]["username"]
+        #Report text
+        report = "#Report\nmessage:\n{0}\n\nGroupID:\n\
+{1}\nUserID:\n{2}\nName:\n{3} {4}\nusername:\n\
+@{5}\nDate:\n{6}".format(message_text, user.chat, user.id, user.fname, user.lname, user.uname, message_date)
+        for admin in admins:#Send report to each admin
+            bot.send_message(chat_id=admin, text=report)
+    #Delete reporter message
+    bot.delete_message(chat_id=chat_id, message_id=report_id)
+        
+
 # searx function for answering /searx command
 def searx(bot, update):
     if 'reply_to_message' in str(update.message):
@@ -216,6 +243,7 @@ def xampp(bot, update):
     answer = answers['xampp']
     bot.send_message(chat_id=user.chat, text=answer, reply_to_message_id=message_id, parse_mode=ParseMode.MARKDOWN)
 
+#Read user messages
 def messages(bot, update):
     user.chat = update.message.chat_id
     message = str(update.message.text).encode('utf-8').decode('utf-8')
@@ -288,6 +316,8 @@ dispatcher.add_handler(link_command) #Add /link command handler.
 mahak_command = CommandHandler('mahak', mahak)
 dispatcher.add_handler(mahak_command) #Add /mahak command handler.
 
+report_command = CommandHandler('report', report)
+dispatcher.add_handler(report_command) #Add /report command handler.
 
 searx_command = CommandHandler('searx', searx)
 dispatcher.add_handler(searx_command) #Add /searx command handler.
