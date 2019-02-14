@@ -58,7 +58,7 @@ def help(bot, update):
 
 # ask function for answering /ask command
 def ask(bot, update):
-    if 'reply_to_message' in str(update.message):
+    if 'reply_to_message' in str(update.message):#Check if message is as reply message!
         message_id = update.message.reply_to_message.message_id
     else:
         message_id = update.message.message_id
@@ -216,6 +216,23 @@ def xampp(bot, update):
     answer = answers['xampp']
     bot.send_message(chat_id=user.chat, text=answer, reply_to_message_id=message_id, parse_mode=ParseMode.MARKDOWN)
 
+def messages(bot, update):
+    user.chat = update.message.chat_id
+    message = str(update.message.text).encode('utf-8').decode('utf-8')
+    answer = str()
+    ubuntus = ['اوبنتو', 'ابنتو', 'ابونتو']
+    works = {'کار کرده؟', 'بلده؟'}
+    for ubuntu in ubuntus:
+        if ubuntu in message:#Check if user say ubuntu as wrong!
+            answer = answer + " *اوبونتو\n"
+    for work in works:
+        if work in message:#Ask your question at first!
+            answer = answer + " بهتر است به جای ارسال مطلب خود در چندین پیام، همه‌ی متن را در یک پیام نوشته و ارسال کنید.\n"
+    if len(answer) > 0:#has bot any answer?!
+        message_id = update.message.message_id
+        bot.send_message(chat_id=user.chat, text=answer, reply_to_message_id=message_id)
+
+
 dispatcher = updater.dispatcher
 
 start_command = CommandHandler('start', start, pass_args=True)
@@ -283,6 +300,10 @@ dispatcher.add_handler(tor_command) #Add /tor command handler.
 
 xampp_command = CommandHandler('xampp', xampp)
 dispatcher.add_handler(xampp_command) #Add /xampp command handler.
+
+message_handler = MessageHandler(Filters.text, messages)
+dispatcher.add_handler(message_handler) #Add message handler.
+
 
 print("READY!")
 
