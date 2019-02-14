@@ -33,126 +33,181 @@ user = User()
 
 # Start function for answering /start command.
 def start(bot, update):
-    message_id=update.message.message_id
+    if 'reply_to_message' in str(update.message):
+        message_id = update.message.reply_to_message.message_id
+        print("Message ID =", message_id)
+    else:
+        message_id = update.message.message_id
     user.chat = update.message.chat_id #Get chat ID.
     answer = answers['start']
     bot.send_message(chat_id=user.chat, text=answer, reply_to_message_id=message_id, parse_mode=ParseMode.MARKDOWN)#Send answer message to chat ID.
 
 # Help function for answering /help command
 def help(bot, update):
-    message_id=update.message.message_id
+    if 'reply_to_message' in str(update.message):
+        message_id = update.message.reply_to_message.message_id
+    else:
+        message_id = update.message.message_id
     user.chat = update.message.chat_id
     answer = answers['help']
     bot.send_message(chat_id=user.chat, text=answer, reply_to_message_id=message_id, parse_mode=ParseMode.MARKDOWN)
 
 # ask function for answering /ask command
 def ask(bot, update):
-    message_id=update.message.message_id
+    if 'reply_to_message' in str(update.message):
+        message_id = update.message.reply_to_message.message_id
+    else:
+        message_id = update.message.message_id
     user.chat = update.message.chat_id
     answer = answers['ask']
     bot.send_message(chat_id=user.chat, text=answer, reply_to_message_id=message_id, parse_mode=ParseMode.MARKDOWN)
 
 # bitcoin function for answering /bitcoin command
 def bitcoin(bot, update):
-    message_id=update.message.message_id
+    if 'reply_to_message' in str(update.message):
+        message_id = update.message.reply_to_message.message_id
+    else:
+        message_id = update.message.message_id
     user.chat = update.message.chat_id
     answer = answers['bitcoin']
     bot.send_message(chat_id=user.chat, text=answer, reply_to_message_id=message_id, parse_mode=ParseMode.MARKDOWN)
 
 # botinfo function for answering /botinfo command
 def botinfo(bot, update):
-    message_id=update.message.message_id
+    if 'reply_to_message' in str(update.message):
+        message_id = update.message.reply_to_message.message_id
+    else:
+        message_id = update.message.message_id
     user.chat = update.message.chat_id
     answer = answers['botinfo']
     bot.send_message(chat_id=user.chat, text=answer, reply_to_message_id=message_id, parse_mode=ParseMode.MARKDOWN)
 
 # farsi function for answering /farsi command
 def farsi(bot, update):
-    message_id=update.message.message_id
+    if 'reply_to_message' in str(update.message):
+        message_id = update.message.reply_to_message.message_id
+    else:
+        message_id = update.message.message_id
     user.chat = update.message.chat_id
     answer = answers['farsi']
     bot.send_message(chat_id=user.chat, text=answer, reply_to_message_id=message_id, parse_mode=ParseMode.MARKDOWN)
 
 # flood function for answering /flood command
 def flood(bot, update):
-    message_id=update.message.message_id
+    if 'reply_to_message' in str(update.message):
+        message_id = update.message.reply_to_message.message_id
+    else:
+        message_id = update.message.message_id
     user.chat = update.message.chat_id
     answer = answers['flood']
     bot.send_message(chat_id=user.chat, text=answer, reply_to_message_id=message_id, parse_mode=ParseMode.MARKDOWN)
 
 # free function for answering /free command
 def free(bot, update):
-    message_id=update.message.message_id
+    if 'reply_to_message' in str(update.message):
+        message_id = update.message.reply_to_message.message_id
+    else:
+        message_id = update.message.message_id
     user.chat = update.message.chat_id
     answer = answers['free']
     bot.send_message(chat_id=user.chat, text=answer, reply_to_message_id=message_id, parse_mode=ParseMode.MARKDOWN)
 
 # grub function for answering /grub command
 def grub(bot, update):
-    message_id=update.message.message_id
+    if 'reply_to_message' in str(update.message):
+        message_id = update.message.reply_to_message.message_id
+    else:
+        message_id = update.message.message_id
     user.chat = update.message.chat_id
     answer = answers['grub']
     bot.send_message(chat_id=user.chat, text=answer, reply_to_message_id=message_id, parse_mode=ParseMode.MARKDOWN)
 
 # hacker function for answering /hacker command
 def hacker(bot, update):
-    message_id=update.message.message_id
+    if 'reply_to_message' in str(update.message):
+        message_id = update.message.reply_to_message.message_id
+    else:
+        message_id = update.message.message_id
     user.chat = update.message.chat_id
     answer = answers['hacker']
     bot.send_message(chat_id=user.chat, text=answer, reply_to_message_id=message_id, parse_mode=ParseMode.MARKDOWN)
 
 # kali function for answering /kali command
 def kali(bot, update):
-    message_id=update.message.message_id
+    if 'reply_to_message' in str(update.message):
+        message_id = update.message.reply_to_message.message_id
+    else:
+        message_id = update.message.message_id
     user.chat = update.message.chat_id
     answer = answers['kali']
     bot.send_message(chat_id=user.chat, text=answer, reply_to_message_id=message_id, parse_mode=ParseMode.MARKDOWN)
 
 # lamp function for answering /lamp command
 def lamp(bot, update):
-    message_id=update.message.message_id
+    if 'reply_to_message' in str(update.message):
+        message_id = update.message.reply_to_message.message_id
+    else:
+        message_id = update.message.message_id
     user.chat = update.message.chat_id
     answer = answers['lamp']
     bot.send_message(chat_id=user.chat, text=answer, reply_to_message_id=message_id, parse_mode=ParseMode.MARKDOWN)
 
 # link function for answering /link command
 def link(bot, update):
-    message_id=update.message.message_id
+    if 'reply_to_message' in str(update.message):
+        message_id = update.message.reply_to_message.message_id
+    else:
+        message_id = update.message.message_id
     user.chat = update.message.chat_id
     answer = answers['link']
     bot.send_message(chat_id=user.chat, text=answer, reply_to_message_id=message_id, parse_mode=ParseMode.MARKDOWN)
 
 # mahak function for answering /mahak command
 def mahak(bot, update):
-    message_id=update.message.message_id
+    if 'reply_to_message' in str(update.message):
+        message_id = update.message.reply_to_message.message_id
+    else:
+        message_id = update.message.message_id
     user.chat = update.message.chat_id
     answer = answers['mahak']
     bot.send_message(chat_id=user.chat, text=answer, reply_to_message_id=message_id, parse_mode=ParseMode.MARKDOWN)
 
 # searx function for answering /searx command
 def searx(bot, update):
-    message_id=update.message.message_id
+    if 'reply_to_message' in str(update.message):
+        message_id = update.message.reply_to_message.message_id
+    else:
+        message_id = update.message.message_id
     user.chat = update.message.chat_id
     answer = answers['searx']
     bot.send_message(chat_id=user.chat, text=answer, reply_to_message_id=message_id, parse_mode=ParseMode.MARKDOWN)
 
 # smart function for answering /smart command
 def smart(bot, update):
-    message_id=update.message.message_id
+    if 'reply_to_message' in str(update.message):
+        message_id = update.message.reply_to_message.message_id
+    else:
+        message_id = update.message.message_id
     user.chat = update.message.chat_id
     answer = answers['smart']
     bot.send_message(chat_id=user.chat, text=answer, reply_to_message_id=message_id, parse_mode=ParseMode.MARKDOWN)
 
 # tor function for answering /tor command
 def tor(bot, update):
-    message_id=update.message.message_id
+    if 'reply_to_message' in str(update.message):
+        message_id = update.message.reply_to_message.message_id
+    else:
+        message_id = update.message.message_id
     user.chat = update.message.chat_id
     answer = answers['tor']
     bot.send_message(chat_id=user.chat, text=answer, reply_to_message_id=message_id, parse_mode=ParseMode.MARKDOWN)
 
 # xampp function for answering /xampp command
 def xampp(bot, update):
-    message_id=update.message.message_id
+    if 'reply_to_message' in str(update.message):
+        message_id = update.message.reply_to_message.message_id
+    else:
+        message_id = update.message.message_id
     user.chat = update.message.chat_id
     answer = answers['xampp']
     bot.send_message(chat_id=user.chat, text=answer, reply_to_message_id=message_id, parse_mode=ParseMode.MARKDOWN)
