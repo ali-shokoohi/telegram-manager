@@ -16,7 +16,7 @@ pip3 install -r requirements.txt #--user
 ```bash
 cd bot/
 
-vim TOKEN.txt #Input your bot's token here!
+echo "BOT_TOKEN" > TOKEN.txt #Input your bot's token here!
 
 python3 bot.py &
 ```
